@@ -1,5 +1,8 @@
 @extends('admin.login.main')
 @section('content')
+    @if (session('message'))
+        <script>alert("<?php echo session('message'); ?>");</script>
+    @endif
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -44,9 +47,7 @@
                     </div>
                     <!-- /.col -->
                 </div>
-                @if (session('message'))
-                    <div class="text-danger">{{ session('message') }}</div>
-                @endif
+               
             </form>
     
             <div class="social-auth-links text-center mt-2 mb-3">
