@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(Request $request){
         if($request->cookie('user_login')){
-            return View('Admin.layout.main');
+            return View('Admin.home.index')->with(['user'=>json_decode($request->cookie('user_login'))]);
         }
         else{
             return redirect('admin/login');

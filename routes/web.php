@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
     Route::get('login',[App\Http\Controllers\Admin\LoginController::class,'index'])->name('login');
     Route::post('login',[App\Http\Controllers\Admin\LoginController::class,'login'])->name('login');
-
-    Route::get('',[App\Http\Controllers\Admin\HomeController::class,'index']);
+    Route::get('/logout',[App\Http\Controllers\Admin\LoginController::class,'logout']);
+    
+    Route::get('',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('home');
     Route::get('/home',[App\Http\Controllers\Admin\HomeController::class,'index']);
     
 });
