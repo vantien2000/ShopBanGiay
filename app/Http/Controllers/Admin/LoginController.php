@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -37,14 +38,16 @@ class LoginController extends Controller
         if($request->isMethod('post')){
             $username = $request->name;
             $password = $request->password;
-            // 
-            $user = User::all()->where('Username','=',$request->name,'and','Password','=',$request->password)->first();
-            if($user){
-                //tạo cookie để lưu đăng nhập
-                Cookie::queue('user_login',$user,10*365*24*3600);
-                return redirect('admin');
+
+            $user = User::where('Username','=',$username)->first();
+            if(!empty($user)){
+                if(Hash::check($password,$user["Password"])){
+                    Cookie::queue('user_login',json_encode($user),10*365*24*3600);
+                    return redirect('admin');
+                }else{
+                    return redirect()->back()->with('message','Mật khẩu không chính xác');
+                }
             }else{
-                //xóa cookie nếu ko có tài khoản
                 return redirect()->back()->with('message','Tài khoản không tồn tại');
             }
         }
