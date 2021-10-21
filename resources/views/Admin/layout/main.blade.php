@@ -25,23 +25,67 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('backend/dist/css/dataTable.css') }}">
+
+  <style>
+    .model{
+      position: absolute;
+      display: none;
+      min-width: 100%;
+      min-height: 100%;
+      background: #111;
+      opacity: 0.75;
+      z-index: 1500;
+    }
+    .create-form{
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    #create-form{
+      width: 50%;
+      z-index: 1501;
+    }
+
+    .update-form{
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    #update-form{
+      width: 50%;
+      z-index: 1501;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+  <div class="model">
   </div>
+  <div class="wrapper">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+    </div>
 
-  @include('Admin.layout.header')
+    @include('Admin.layout.header')
 
-  @include('Admin.layout.menu')
- 
-  @yield('content')
+    @include('Admin.layout.menu')
   
-  @include('Admin.layout.footer')
-</div>
+    @yield('content')
+    
+    @include('Admin.layout.footer')
+  </div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -50,33 +94,38 @@
 <script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.btn-create').click(function(){
+      $('.model').css('display','block');
+      $('.create-form').css('display','flex');
+      $('.update-form').css('display','none');
+      $('.input-create').val('');
+    });
+
+    $('.close').click(function(){
+      $('.model').css('display','none');
+      $('.create-form').css('display','none');
+      $('.update-form').css('display','none');
+    });
+
+    $('.btn-update').click(function(){
+      $('.model').css('display','block');
+      $('.create-form').css('display','none');
+      $('.update-form').css('display','flex');
+    });
+  });
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('backend/plugins/chart.js/Chart.min.j') }}s"></script>
-<!-- Sparkline -->
-<script src="{{ asset('backend/plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset('backend/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('backend/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('backend/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
+{{-- Validate Form --}}
+<script src="{{ asset('backend/dist/js/validateForm.js') }}"></script>
+<script src="{{ asset('backend/dist/js/ajax.js') }}"></script>
 </body>
 </html>

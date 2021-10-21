@@ -12,19 +12,6 @@ use App\Models\User;
 class LoginController extends Controller
 {
     public function index(Request $request){
-        //tạo user 
-
-        // $user = new User();
-        // $user->Name = 'Nguyễn Văn Tiến';
-        // $user->Username = 'vantien2k';
-        // $user->Password = bcrypt('123456');
-        // $user->Avatar = '';
-        // $user->Email = '';
-        // $user->Address = '';
-        // $user->PhoneNumber = '';
-        // $user->status = true;
-        // $user->UserType = '1';
-        // $user->save();
         if($request->cookie('user_login')){
             return redirect()->route('home');
         }
