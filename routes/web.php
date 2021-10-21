@@ -20,3 +20,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/home',[App\Http\Controllers\Admin\HomeController::class,'index']);
 });
 
+
+//User management
+    Route::get('/Brand-Product',[App\Http\Controllers\Admin\BrandProductController::class,'index']);
+

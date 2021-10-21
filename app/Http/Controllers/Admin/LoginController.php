@@ -13,7 +13,6 @@ class LoginController extends Controller
 {
     public function index(Request $request){
         //tạo user 
-
         // $user = new User();
         // $user->Name = 'Nguyễn Văn Tiến';
         // $user->Username = 'vantien2k';
