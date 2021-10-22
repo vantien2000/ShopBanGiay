@@ -1,5 +1,4 @@
-<!-- Main content -->
-<section class="content">
+@section('add')
   <div class="container-fluid">
     <div class="row">
       <!-- left column -->
@@ -7,7 +6,7 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Quick Example</h3>
+            <h3 class="card-title">New brand product</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -33,11 +32,6 @@
                   </div>
                 </div>
               </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-              </div>
-            </div>
             <!-- /.card-body -->
 
             <div class="card-footer">
@@ -49,4 +43,4 @@
       </div>
     </div>
   </div>
-</section>
+@endsection

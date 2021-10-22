@@ -23,6 +23,5 @@ Route::prefix('admin')->group(function () {
 
 //User management
     Route::get('/Brand-Product',[App\Http\Controllers\Admin\BrandProductController::class,'index']);
-    Route::get('/newBrand',[App\Http\Controllers\Admin\BrandProductController::class,'addnewBrand']);
 
 

@@ -24,7 +24,7 @@
   <section class="content">
     <div class="card-header">
       <div class="text-right">
-        <a href="{{URL('/newBrand')}}" class="btn btn-sm btn-success">
+        <a href="" class="btn btn-sm btn-success">
           <i class="fas fa-user-plus"></i> Add new brand
         </a>
       </div>
